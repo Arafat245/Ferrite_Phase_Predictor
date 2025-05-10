@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ferrite Calculator</title>
+</head>
+<body>
+    <h2>Enter Elemental Percentages</h2>
+    <form id="ferrite-form">
+        {% for element in ['C', 'N', 'Mn', 'Ni', 'Cr', 'Mo', 'Si', 'Cu', 'Nb'] %}
+            <label>{{ element }}:</label>
+            <input type="number" name="{{ element }}" step="any" required><br>
+        {% endfor %}
+        <input type="submit" value="Calculate Ferrite %">
+    </form>
+
+    <p id="output"></p>
+
+    <script>
+        document.getElementById("ferrite-form").onsubmit = async function(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const response = await fetch("/calculate", {
+                method: "POST",
+                body: formData
+            });
+            const data = await response.json();
+            document.getElementById("output").innerText =
+                data.ferrite_percent !== undefined ? `Ferrite %: ${data.ferrite_percent}` : `Error: ${data.error}`;
+        };
+    </script>
+</body>
+</html>
