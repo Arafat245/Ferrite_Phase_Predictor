@@ -36,7 +36,7 @@ def our_calc(C, N, Mn, Ni, Cr, Mo, Si, Cu, Nb):
         if row['FE (vol%) min'] <= fe_our and fe_our <= row['FE (vol%) max']:
             #print(f'According to Our Calculation Ferrite: {fe_our}')
             fe_final = fe_our
+            return fe_final
         else:
             fe_final = 0
-
-    return fe_final
+            return fe_final
