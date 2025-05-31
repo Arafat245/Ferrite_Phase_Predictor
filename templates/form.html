@@ -16,24 +16,32 @@
     </form>
 
     <h2 id="output"></h2>
+	<img id="diagram" style="display: none; max-width: 100%; height: auto; border: 1px solid #ccc; margin-top: 20px;" />
 
-    <script>
-        document.getElementById("ferrite-form").onsubmit = async function(e) {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            const response = await fetch("/calculate", {
-                method: "POST",
-                body: formData
-            });
-            const data = await response.json();
-            if (data.error !== undefined) {
-                document.getElementById("output").innerText = `Error: ${data.error}`;
-            } else {
-                document.getElementById("output").innerText =
-                    `According to Schaeffler: ${data.sc_percent}\n` +
-                    `According to our model: ${data.ferrite_percent}`;
-            }
-        };
-    </script>
+
+<script>
+    document.getElementById("ferrite-form").onsubmit = async function(e) {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const response = await fetch("/calculate", {
+            method: "POST",
+            body: formData
+        });
+        const data = await response.json();
+        if (data.error !== undefined) {
+            document.getElementById("output").innerText = `Error: ${data.error}`;
+            document.getElementById("diagram").style.display = "none";
+        } else {
+            document.getElementById("output").innerText =
+                `According to Schaeffler: ${data.sc_percent}\n\n` +
+                `According to our model: ${data.ferrite_percent}`;
+            const plotUrl = `/plot.png?oCreq=${data.oCreq}&oNieq=${data.oNieq}&sCreq=${data.sCreq}&sNieq=${data.sNieq}`;
+            const diagram = document.getElementById("diagram");
+            diagram.src = plotUrl + "&" + new Date().getTime();  // cache-bust
+            diagram.style.display = "block";
+        }
+    };
+</script>
+
 </body>
 </html>
