@@ -17,7 +17,11 @@ def calculate():
         sc_result,  sNieq, sCreq = sc_calc(**inputs)
         return jsonify({
             'ferrite_percent': our_result,
-            'sc_percent': sc_result
+            'sc_percent': sc_result,
+            'oNieq': oNieq,
+            'oCreq': oCreq,
+            'sNieq': sNieq,
+            'sCreq': sCreq,
         })
     except Exception as e:
         return jsonify({'error': str(e)})
