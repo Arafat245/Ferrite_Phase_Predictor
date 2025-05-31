@@ -4,7 +4,8 @@
     <title>Ferrite Calculator</title>
 </head>
 <body>
-    <h1 style="text-align: center;">Constitutional Diagrams for Phase Prediction</h1>
+	<h1 style="text-align: center;">Constitutional Diagrams for Phase Prediction</h1>
+
     <h2>Enter Elemental Percentages</h2>
     <form id="ferrite-form">
         {% for element in ['C', 'N', 'Mn', 'Ni', 'Cr', 'Mo', 'Si', 'Cu', 'Nb'] %}
@@ -25,8 +26,13 @@
                 body: formData
             });
             const data = await response.json();
-            document.getElementById("output").innerText =
-                data.ferrite_percent !== undefined ? `Ferrite %: ${data.ferrite_percent}` : `Error: ${data.error}`;
+            if (data.error !== undefined) {
+                document.getElementById("output").innerText = `Error: ${data.error}`;
+            } else {
+                document.getElementById("output").innerText =
+                    `According to Schaeffler: ${data.sc_percent}\n` +
+                    `According to our model: ${data.ferrite_percent}`;
+            }
         };
     </script>
 </body>
