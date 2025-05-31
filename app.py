@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from flask import Flask, request, jsonify, render_template
 from our import our_calc
 from sc import sc_calc
@@ -96,4 +95,3 @@ if __name__ == '__main__':
     import os
     port = int(os.environ.get("PORT", 10000))
     app.run(host='0.0.0.0', port=port)
->>>>>>> f5c14f1 (WIP: save progress before rebase)

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 services:
   - type: web
     name: Ferrite_Phase_Predictor
@@ -6,12 +5,3 @@ services:
     plan: free
     buildCommand: ""
     startCommand: "python app.py"
-=======
-services:
-  - type: web
-    name: Ferrite_Phase_Predictor
-    env: python
-    plan: free
-    buildCommand: ""
-    startCommand: "python app.py"
->>>>>>> 949c7ce (waa commit)
