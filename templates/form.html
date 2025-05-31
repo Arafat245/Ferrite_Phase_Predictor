@@ -4,19 +4,26 @@
     <title>Ferrite Calculator</title>
 </head>
 <body>
-	<h1 style="text-align: center;">Constitutional Diagrams for Phase Prediction</h1>
+    <h1 style="text-align: center;">Constitutional Diagrams for Phase Prediction</h1>
 
-    <h2>Enter Elemental Percentages</h2>
-    <form id="ferrite-form">
-        {% for element in ['C', 'N', 'Mn', 'Ni', 'Cr', 'Mo', 'Si', 'Cu', 'Nb'] %}
-            <label>{{ element }}:</label>
-            <input type="number" name="{{ element }}" step="any" required><br>
-        {% endfor %}
-        <input type="submit" value="Calculate Ferrite %">
-    </form>
+    <div style="max-width: 600px; margin: 0 auto; text-align: left;">
+        <h2>Enter Elemental Percentages</h2>
+        <form id="ferrite-form">
+            {% for element in ['C', 'N', 'Mn', 'Ni', 'Cr', 'Mo', 'Si', 'Cu', 'Nb'] %}
+                <div style="margin-bottom: 10px;">
+                    <label style="display: inline-block; width: 40px;">{{ element }}:</label>
+                    <input type="number" name="{{ element }}" step="any" required>
+                </div>
+            {% endfor %}
+            <input type="submit" value="Calculate Ferrite %">
+        </form>
 
-    <h2 id="output"></h2>
-	<img id="diagram" src="/static/schaeffler_nogrid_2x.png" style="max-width: 40%; height: auto; border: 1px solid #ccc; margin-top: 20px;" />
+        <h2 id="output" style="margin-top: 30px;"></h2>
+
+        <div style="text-align: center;">
+            <img id="diagram" src="/static/schaeffler_nogrid_2x.png" style="max-width: 40%; height: auto; border: 1px solid #ccc; margin-top: 20px;" />
+        </div>
+    </div>
 
 
 <script>
