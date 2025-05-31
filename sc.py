@@ -28,8 +28,8 @@ def sc_calc(C, N, Mn, Ni, Cr, Mo, Si, Cu, Nb):
         fe_sc = int(fe_sc)
 
         if row['FE (vol%) min'] <= fe_sc and fe_sc <= row['FE (vol%) max']:
-            return fe_sc
-    return 0
+            return fe_sc, Nieq, Creq
+    return 0, Nieq, Creq
     
     
     

@@ -13,8 +13,8 @@ def calculate():
     try:
         # Get form input and convert to floats
         inputs = {k: float(request.form[k]) for k in ['C', 'N', 'Mn', 'Ni', 'Cr', 'Mo', 'Si', 'Cu', 'Nb']}
-        our_result = our_calc(**inputs)
-        sc_result = sc_calc(**inputs)
+        our_result, oNieq, oCreq = our_calc(**inputs)
+        sc_result,  sNieq, sCreq = sc_calc(**inputs)
         return jsonify({
             'ferrite_percent': our_result,
             'sc_percent': sc_result
