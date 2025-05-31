@@ -46,8 +46,8 @@ def plot_image():
         ax.grid(color='k', linestyle='--', linewidth=0.2)
         ax.plot(oCreq, oNieq, marker='o', color='red', linestyle='None', label='Our Model')
         ax.plot(sCreq, sNieq, marker='d', color='blue', linestyle='None', label='Schaeffler')
-        ax.set_xlabel('Chromium Equivalent (%)')
-        ax.set_ylabel('Nickel Equivalent (%)')
+        ax.set_xlabel('Chromium Equivalent')
+        ax.set_ylabel('Nickel Equivalent')
         ax.legend(loc="upper left")
 
         buf = io.BytesIO()
