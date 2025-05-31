@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: flask-calculator
+    name: Ferrite_Phase_Predictor
     env: python
     plan: free
     buildCommand: ""
